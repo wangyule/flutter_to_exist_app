@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <FlutterPluginRegistrant/GeneratedPluginRegistrant.h>
 
 @interface AppDelegate ()
 
@@ -16,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.flutterEngine = [[FlutterEngine alloc] initWithName:@"my flutter engine"];
+    [self.flutterEngine run];
+    [GeneratedPluginRegistrant registerWithRegistry:self.flutterEngine];
+    
     return YES;
 }
 

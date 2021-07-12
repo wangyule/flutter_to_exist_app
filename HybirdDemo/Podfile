@@ -12,17 +12,10 @@ inhibit_all_warnings!
 flutter_application_path = '../flutter_module_demo' 
 load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
-#多个target共用pod第三方时，不要加这句，否则其他target不能更新（参考：https://blog.csdn.net/syg90178aw/article/details/52913249）
-#解决每次更新pod时，试运行等其他target就会编译报错的问题 delete by hhx 2019.08.28
-#target 'BoseraFund' do
-
 #Uncomment this line if you're using swift or would like to use dynamic frameworks
 #指定生成framework库，否则默认会生成.a静态库
 #use_frameworks!
 
-#end  ### 与 "target 'HybirdDemo' do" 成对出现 delete by hhx 2019.08.28
-
-# 解决每次更新pod时，试运行等其他target就会编译报错的问题 add by hhx 2019.08.28
 # 项目中的target各自的设置
 target 'HybirdDemo' do
   #可以在这里添加"HybirdDemo"独自引用的pod第三方
