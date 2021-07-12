@@ -1,6 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart'; // 非使用Flutter_Boost与原生 进行交互时，需要加上
+import 'package:flutter_boost/flutter_boost.dart';
+import 'package:flutter/cupertino.dart';
+import './home_page.dart';
 
+class CustomFlutterBinding extends WidgetsFlutterBinding with BoostFlutterBinding {
+
+}
+
+void main() {
+  //在runApp之前确保BoostFlutterBinding初始化
+  CustomFlutterBinding();
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ///路由表
+  static Map<String, FlutterBoostRouteFactory> routerMap = {
+    'homePage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+          settings: settings,
+          pageBuilder: (_, __, ___) {
+            return HomePage();
+          });
+    },
+    // 'simplePage': (settings, uniqueId) {
+    //   return PageRouteBuilder<dynamic>(
+    //       settings: settings,
+    //       pageBuilder: (_, __, ___) => SimplePage(
+    //         data: settings.arguments,
+    //       ));
+    // },
+  };
+
+  Route<dynamic> routeFactory(RouteSettings settings, String uniqueId) {
+    FlutterBoostRouteFactory func = routerMap[settings.name];
+    if (func == null) {
+      return null;
+    }
+    return func(settings, uniqueId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FlutterBoostApp(routeFactory);
+  }
+}
+
+/* 没有使用Flutter_Boost与原生 进行交互
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -31,7 +83,6 @@ class _HomePage extends StatefulWidget {
 }
 
 class __HomePageState extends State<_HomePage> {
-
   String title = "Flutter to Native";
   Color backgroundColor = Colors.red;
   // 创建 MethodChannel 这里的标志跟 ios 中设置要一致
@@ -76,4 +127,4 @@ class __HomePageState extends State<_HomePage> {
       ),
     );
   }
-}
+} */

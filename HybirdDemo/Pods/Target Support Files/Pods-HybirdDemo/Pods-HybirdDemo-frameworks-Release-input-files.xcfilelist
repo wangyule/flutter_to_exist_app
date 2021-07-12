@@ -1,3 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo-frameworks.sh
-${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt
 ${PODS_ROOT}/../../flutter_module_demo/.ios/Flutter/App.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/Flutter/Flutter.framework/Flutter

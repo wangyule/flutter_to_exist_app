@@ -56,6 +56,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_boost",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/git/flutter_boost-b07e6cfe89f4be6cdb46133b3e2271d93272730c/",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/huanghx/Documents/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -137,10 +143,10 @@
       "name": "flutter_module_demo",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.8"
     }
   ],
-  "generated": "2021-07-12T02:12:22.584658Z",
+  "generated": "2021-07-12T09:18:36.297084Z",
   "generator": "pub",
   "generatorVersion": "2.13.1"
 }

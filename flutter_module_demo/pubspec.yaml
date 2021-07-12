@@ -18,7 +18,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0" # >=2.12.0 <3.0.0 改为 >=2.8.0 <3.0.0，sdk 2.12 以上版本有了空安全要求
 
 dependencies:
   flutter:
@@ -27,6 +27,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
+
+#  flutter_boost: ^1.12.13+3
+  flutter_boost:
+    git:
+      url: 'https://github.com/alibaba/flutter_boost.git'
+      ref: 'v3.0-preview.7'
 
 dev_dependencies:
   flutter_test:
@@ -43,7 +49,8 @@ flutter:
 
   # To add Flutter specific assets to your application, add an assets section,
   # like this:
-  # assets:
+  assets:
+    - images/lake.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

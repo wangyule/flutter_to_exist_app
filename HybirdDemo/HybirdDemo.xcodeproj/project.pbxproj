@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		0E25F39D269B393700C0C218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F39C269B393700C0C218 /* main.m */; };
 		0E25F3A7269B393700C0C218 /* HybirdDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3A6269B393700C0C218 /* HybirdDemoTests.m */; };
 		0E25F3B2269B393700C0C218 /* HybirdDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3B1269B393700C0C218 /* HybirdDemoUITests.m */; };
+		A8302EC1269C2DF4002295B8 /* PlatformRouterImp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */; };
 		C281A332C58ED0EE8D806B5A /* libPods-HybirdDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 828472C19C6EAB801917B7AF /* libPods-HybirdDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 		0E25F3B1269B393700C0C218 /* HybirdDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HybirdDemoUITests.m; sourceTree = "<group>"; };
 		0E25F3B3269B393700C0C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		828472C19C6EAB801917B7AF /* libPods-HybirdDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HybirdDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8302EBF269C2DF4002295B8 /* PlatformRouterImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformRouterImp.h; sourceTree = "<group>"; };
+		A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformRouterImp.m; sourceTree = "<group>"; };
 		BF30ED1AD1D60592AD2AB1E0 /* Pods-HybirdDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybirdDemo.debug.xcconfig"; path = "Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C56A298F896C779DEFA62530 /* Pods-HybirdDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybirdDemo.release.xcconfig"; path = "Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +114,7 @@
 		0E25F389269B393400C0C218 /* HybirdDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A8302EBE269C2DCF002295B8 /* FlutterRouter */,
 				0E25F38A269B393400C0C218 /* AppDelegate.h */,
 				0E25F38B269B393400C0C218 /* AppDelegate.m */,
 				0E25F38D269B393400C0C218 /* SceneDelegate.h */,
@@ -158,8 +162,16 @@
 				BF30ED1AD1D60592AD2AB1E0 /* Pods-HybirdDemo.debug.xcconfig */,
 				C56A298F896C779DEFA62530 /* Pods-HybirdDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A8302EBE269C2DCF002295B8 /* FlutterRouter */ = {
+			isa = PBXGroup;
+			children = (
+				A8302EBF269C2DF4002295B8 /* PlatformRouterImp.h */,
+				A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */,
+			);
+			path = FlutterRouter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +182,6 @@
 			buildConfigurationList = 0E25F3B6269B393700C0C218 /* Build configuration list for PBXNativeTarget "HybirdDemo" */;
 			buildPhases = (
 				1600F35AE71022CC97AA0901 /* [CP] Check Pods Manifest.lock */,
-				E0D0588A214C6BA9BB0DED92 /* [CP] Prepare Artifacts */,
 				1B7DBAB7B147EEB6C28633DF /* [CP-User] Run Flutter Build flutter_module_demo Script */,
 				0E25F383269B393400C0C218 /* Sources */,
 				0E25F384269B393400C0C218 /* Frameworks */,
@@ -340,23 +351,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0D0588A214C6BA9BB0DED92 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -367,6 +361,7 @@
 				0E25F392269B393400C0C218 /* ViewController.m in Sources */,
 				0E25F38C269B393400C0C218 /* AppDelegate.m in Sources */,
 				0E25F39D269B393700C0C218 /* main.m in Sources */,
+				A8302EC1269C2DF4002295B8 /* PlatformRouterImp.m in Sources */,
 				0E25F38F269B393400C0C218 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

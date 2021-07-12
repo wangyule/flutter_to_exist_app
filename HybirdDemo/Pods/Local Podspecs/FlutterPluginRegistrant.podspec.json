@@ -28,6 +28,9 @@
   "dependencies": {
     "Flutter": [
 
+    ],
+    "flutter_boost": [
+
     ]
   }
 }
