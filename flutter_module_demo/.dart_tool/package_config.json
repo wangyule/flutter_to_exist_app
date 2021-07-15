@@ -38,8 +38,32 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "common_utils",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/common_utils-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "convert",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/convert-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/crypto-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/cupertino_icons-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "decimal",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/decimal-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -82,6 +106,12 @@
     {
       "name": "path",
       "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "rational",
+      "rootUri": "file:///Users/huanghx/Documents/flutter/.pub-cache/hosted/pub.flutter-io.cn/rational-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -146,7 +176,7 @@
       "languageVersion": "2.8"
     }
   ],
-  "generated": "2021-07-12T09:18:36.297084Z",
+  "generated": "2021-07-15T07:53:01.033974Z",
   "generator": "pub",
   "generatorVersion": "2.13.1"
 }

@@ -2,13 +2,29 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart'; // 非使用Flutter_Boost与原生 进行交互时，需要加上
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:flutter/cupertino.dart';
-import './home_page.dart';
+import 'pages/home_page.dart';
+import 'pages/main_page.dart';
+import 'pages/simple_page.dart';
+import 'pages/lifecycle_test_page.dart';
+import 'pages/replacement_page.dart';
+import 'pages/dialog_page.dart';
 
-class CustomFlutterBinding extends WidgetsFlutterBinding with BoostFlutterBinding {
-
-}
+///创建一个自定义的Binding，继承和with的关系如下，里面什么都不用写
+class CustomFlutterBinding extends WidgetsFlutterBinding with BoostFlutterBinding {}
 
 void main() {
+  //添加全局生命周期监听类
+  PageVisibilityBinding.instance.addGlobalObserver(AppLifecycleObserver());
+
+  // ///声明一个用来存回调的对象
+  // VoidCallback removeListener;
+  // ///添加事件响应者,监听native发往flutter端的事件
+  // removeListener = BoostChannel.instance.addEventListener("yourEventKey", (key, arguments) {
+  //   ///deal with your event here
+  //   print('监听到native发往flutter端的事件, ${arguments}');
+  //   return;
+  // });
+
   //在runApp之前确保BoostFlutterBinding初始化
   CustomFlutterBinding();
   runApp(MyApp());
@@ -20,7 +36,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ///路由表
+  ///路由表(用于原生通过flutter_boost打开以下页面)
   static Map<String, FlutterBoostRouteFactory> routerMap = {
     'homePage': (settings, uniqueId) {
       return PageRouteBuilder<dynamic>(
@@ -29,13 +45,56 @@ class _MyAppState extends State<MyApp> {
             return HomePage();
           });
     },
-    // 'simplePage': (settings, uniqueId) {
+    // 'mainPage': (settings, uniqueId) {
     //   return PageRouteBuilder<dynamic>(
     //       settings: settings,
-    //       pageBuilder: (_, __, ___) => SimplePage(
-    //         data: settings.arguments,
-    //       ));
+    //       pageBuilder: (_, __, ___) {
+    //         return MainPage();
+    //       });
     // },
+
+    'mainPage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+          settings: settings,
+          pageBuilder: (_, __, ___) {
+            Map<String, Object> map = settings.arguments;
+            String data = map['data'];
+            return MainPage(
+              data: data,
+            );
+          });
+    },
+
+    'simplePage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+          settings: settings,
+          pageBuilder: (_, __, ___) => SimplePage(
+            data: settings.arguments,
+          ));
+    },
+
+    ///生命周期例子页面
+    'lifecyclePage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+          settings: settings, pageBuilder: (_, __, ___) => LifecycleTestPage());
+    },
+    'replacementPage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+          settings: settings, pageBuilder: (_, __, ___) => ReplacementPage());
+    },
+
+    ///透明弹窗页面
+    'dialogPage': (settings, uniqueId) {
+      return PageRouteBuilder<dynamic>(
+
+        ///透明弹窗页面这个需要是false
+          opaque: false,
+
+          ///背景蒙版颜色
+          barrierColor: Colors.black12,
+          settings: settings,
+          pageBuilder: (_, __, ___) => DialogPage());
+    },
   };
 
   Route<dynamic> routeFactory(RouteSettings settings, String uniqueId) {
@@ -46,9 +105,16 @@ class _MyAppState extends State<MyApp> {
     return func(settings, uniqueId);
   }
 
+  Widget appBuilder(Widget home) {
+    return MaterialApp(home: home, debugShowCheckedModeBanner: false);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FlutterBoostApp(routeFactory);
+    return FlutterBoostApp(
+      routeFactory,
+      appBuilder: appBuilder,
+    );
   }
 }
 

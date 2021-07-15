@@ -6,6 +6,8 @@
 //
 
 #import "SceneDelegate.h"
+#import "BoostDelegate.h"
+#import "ViewController.h"
 
 @interface SceneDelegate ()
 
@@ -18,6 +20,37 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    //默认方法
+    BoostDelegate *delegate = [[BoostDelegate alloc ] init];
+    UIApplication *application = [UIApplication sharedApplication];
+    [[FlutterBoost instance] setup:application delegate:delegate callback:^(FlutterEngine *engine) {
+
+    }];
+    
+    // 原生页面
+    ViewController *vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"hybrid" image:nil tag:0];
+   
+    // flutter页面
+    FBFlutterViewContainer *fvc = FBFlutterViewContainer.new;
+    [fvc setName:@"mainPage" uniqueId:nil params:@{} opaque:YES];
+    fvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"flutter_tab" image:nil tag:1];
+
+
+    UITabBarController *tabVC = [[UITabBarController alloc] init];
+    tabVC.viewControllers = @[vc, fvc];
+
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tabVC];
+    
+    delegate.navigationController = nvc;
+    
+    UIWindowScene *windowScene = (UIWindowScene *)scene;
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    self.window.rootViewController = nvc;
+    [self.window makeKeyAndVisible];
 }
 
 

@@ -16,7 +16,7 @@
 		0E25F39D269B393700C0C218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F39C269B393700C0C218 /* main.m */; };
 		0E25F3A7269B393700C0C218 /* HybirdDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3A6269B393700C0C218 /* HybirdDemoTests.m */; };
 		0E25F3B2269B393700C0C218 /* HybirdDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E25F3B1269B393700C0C218 /* HybirdDemoUITests.m */; };
-		A8302EC1269C2DF4002295B8 /* PlatformRouterImp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */; };
+		A8302EF7269EFC6A002295B8 /* BoostDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8302EF6269EFC6A002295B8 /* BoostDelegate.m */; };
 		C281A332C58ED0EE8D806B5A /* libPods-HybirdDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 828472C19C6EAB801917B7AF /* libPods-HybirdDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +57,8 @@
 		0E25F3B1269B393700C0C218 /* HybirdDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HybirdDemoUITests.m; sourceTree = "<group>"; };
 		0E25F3B3269B393700C0C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		828472C19C6EAB801917B7AF /* libPods-HybirdDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HybirdDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8302EBF269C2DF4002295B8 /* PlatformRouterImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformRouterImp.h; sourceTree = "<group>"; };
-		A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformRouterImp.m; sourceTree = "<group>"; };
+		A8302EF5269EFC6A002295B8 /* BoostDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoostDelegate.h; sourceTree = "<group>"; };
+		A8302EF6269EFC6A002295B8 /* BoostDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoostDelegate.m; sourceTree = "<group>"; };
 		BF30ED1AD1D60592AD2AB1E0 /* Pods-HybirdDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybirdDemo.debug.xcconfig"; path = "Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C56A298F896C779DEFA62530 /* Pods-HybirdDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybirdDemo.release.xcconfig"; path = "Target Support Files/Pods-HybirdDemo/Pods-HybirdDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +114,7 @@
 		0E25F389269B393400C0C218 /* HybirdDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A8302F39269FC08D002295B8 /* Category */,
 				A8302EBE269C2DCF002295B8 /* FlutterRouter */,
 				0E25F38A269B393400C0C218 /* AppDelegate.h */,
 				0E25F38B269B393400C0C218 /* AppDelegate.m */,
@@ -168,10 +169,25 @@
 		A8302EBE269C2DCF002295B8 /* FlutterRouter */ = {
 			isa = PBXGroup;
 			children = (
-				A8302EBF269C2DF4002295B8 /* PlatformRouterImp.h */,
-				A8302EC0269C2DF4002295B8 /* PlatformRouterImp.m */,
+				A8302EF5269EFC6A002295B8 /* BoostDelegate.h */,
+				A8302EF6269EFC6A002295B8 /* BoostDelegate.m */,
 			);
 			path = FlutterRouter;
+			sourceTree = "<group>";
+		};
+		A8302F39269FC08D002295B8 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				A8302F3A269FC09C002295B8 /* UICategory */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		A8302F3A269FC09C002295B8 /* UICategory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UICategory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,10 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8302EF7269EFC6A002295B8 /* BoostDelegate.m in Sources */,
 				0E25F392269B393400C0C218 /* ViewController.m in Sources */,
 				0E25F38C269B393400C0C218 /* AppDelegate.m in Sources */,
 				0E25F39D269B393700C0C218 /* main.m in Sources */,
-				A8302EC1269C2DF4002295B8 /* PlatformRouterImp.m in Sources */,
 				0E25F38F269B393400C0C218 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
