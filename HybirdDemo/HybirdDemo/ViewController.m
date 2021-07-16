@@ -24,7 +24,10 @@
 @implementation ViewController
 
 - (void)dealloc {
-    self.removeListener = nil;
+    if (self.removeListener) {
+        self.removeListener();
+        self.removeListener = nil;
+    }
 }
 
 - (void)viewDidLoad {
@@ -71,7 +74,7 @@
         //在这里处理你的事件
         NSLog(@"name:%@, arguments:%@", name, arguments);
         
-    } forName:@"event"];
+    } forName:@""];
     
     UIButton *button3 = [UIButton new];
     button3.backgroundColor = UIColor.blueColor;

@@ -16,15 +16,6 @@ void main() {
   //添加全局生命周期监听类
   PageVisibilityBinding.instance.addGlobalObserver(AppLifecycleObserver());
 
-  // ///声明一个用来存回调的对象
-  // VoidCallback removeListener;
-  // ///添加事件响应者,监听native发往flutter端的事件
-  // removeListener = BoostChannel.instance.addEventListener("yourEventKey", (key, arguments) {
-  //   ///deal with your event here
-  //   print('监听到native发往flutter端的事件, ${arguments}');
-  //   return;
-  // });
-
   //在runApp之前确保BoostFlutterBinding初始化
   CustomFlutterBinding();
   runApp(MyApp());
