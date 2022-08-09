@@ -29,6 +29,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ///路由表(用于原生通过flutter_boost打开以下页面)
   static Map<String, FlutterBoostRouteFactory> routerMap = {
+    // 首页
     'homePage': (settings, uniqueId) {
       return PageRouteBuilder<dynamic>(
           settings: settings,
