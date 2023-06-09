@@ -16,8 +16,12 @@ void main() {
   //添加全局生命周期监听类
   PageVisibilityBinding.instance.addGlobalObserver(AppLifecycleObserver());
 
-  //在runApp之前确保BoostFlutterBinding初始化
+  /**
+   * 在runApp之前确保BoostFlutterBinding初始化
+   * 这里的CustomFlutterBinding调用务必不可缺少，用于控制Boost状态的resume和pause
+   */
   CustomFlutterBinding();
+
   runApp(MyApp());
 }
 
@@ -110,7 +114,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-/* 没有使用Flutter_Boost与原生 进行交互
+/* 没有使用Flutter_Boost第三方库，而是自己实现Flutter与原生 进行交互
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

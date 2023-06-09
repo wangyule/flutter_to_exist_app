@@ -97,7 +97,7 @@
     };
     [[FlutterBoost instance] open:options];
     
-    /** 没有使用Flutter_Boost与原生 进行交互
+    /** 没有使用Flutter_Boost第三方库，而是自己实现Flutter与原生 进行交互
     // 获取全局的 flutterEngine,防止跳转的时候卡顿
     FlutterEngine *flutterEngine = ((AppDelegate *)UIApplication.sharedApplication.delegate).flutterEngine;
     // 跳转的界面控制器
