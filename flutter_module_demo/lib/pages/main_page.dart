@@ -12,7 +12,7 @@ class Model {
 class MainPage extends StatefulWidget {
   final String data;
 
-  const MainPage({Key key, this.data}) : super(key: key);
+  const MainPage({Key? key, required this.data}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -22,8 +22,8 @@ class _MainPageState extends State<MainPage> {
   TextEditingController _controller = TextEditingController();
 
   GlobalKey<ScaffoldState> key = GlobalKey();
-
-  VoidCallback removeListener;
+  // 添加late，就可以不用初始化 modify by hhx 2023.06.15
+  late VoidCallback removeListener;
 
   @override
   void initState() {
@@ -51,17 +51,18 @@ class _MainPageState extends State<MainPage> {
 
       Overlay.of(context).insert(entry);
 
-      Future.delayed(const Duration(seconds: 2), () {
+      Future<dynamic> future = Future.delayed(const Duration(seconds: 2), () {
         entry.remove();
       });
-      return;
+
+      return future;
     });
   }
 
   @override
   void dispose() {
     ///记得解除注册
-    removeListener?.call();
+    removeListener.call();
     super.dispose();
   }
 
@@ -216,6 +217,7 @@ class _MainPageState extends State<MainPage> {
     final bar = SnackBar(
         content: Text('return value is $value'),
         duration: const Duration(seconds: 1));
-    key.currentState.showSnackBar(bar);
+    // key.currentState.showSnackBar(bar); // showSnackBar已被废弃
+    ScaffoldMessenger.of(context).showSnackBar(bar);
   }
 }

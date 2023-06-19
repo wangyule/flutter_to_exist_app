@@ -5,19 +5,24 @@
 #source 'https://github.com/CocoaPods/Specs.git'
 #source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 # Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
-inhibit_all_warnings!
+#platform :ios, '9.0'
+#inhibit_all_warnings!
 
-# flutter module 文件路径
-flutter_application_path = '../flutter_module_demo' 
+# flutter module 文件路径（flutter_module_demo为flutter项目名）
+flutter_application_path = '../flutter_module_demo'
 load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
 #Uncomment this line if you're using swift or would like to use dynamic frameworks
 #指定生成framework库，否则默认会生成.a静态库
-#use_frameworks!
+use_frameworks!
 
 # 项目中的target各自的设置
 target 'HybirdDemo' do
   #可以在这里添加"HybirdDemo"独自引用的pod第三方
-install_all_flutter_pods(flutter_application_path)
+  install_all_flutter_pods(flutter_application_path)
+end
+
+# 如果不加上 下面这句，会报错：Invalid `Podfile` file: Missing `flutter_post_install(installer)`
+post_install do |installer|
+  flutter_post_install(installer) if defined?(flutter_post_install)
 end

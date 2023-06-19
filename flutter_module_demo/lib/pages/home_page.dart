@@ -15,7 +15,7 @@ class HomePageState extends State<HomePage> {
   VoidCallback removeListener = BoostChannel.instance.addEventListener("yourEventKey", (key, arguments) {
     ///deal with your event here
     print('监听到native发往flutter端的事件, ${arguments}');
-    return;
+    return Future<dynamic>(() => null);
   });
 
   @override

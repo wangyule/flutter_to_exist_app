@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/services.dart'; // 非使用Flutter_Boost与原生 进行交互时，需要加上
 import 'package:flutter_boost/flutter_boost.dart';
-import 'package:flutter/cupertino.dart';
 import 'pages/home_page.dart';
 import 'pages/main_page.dart';
 import 'pages/simple_page.dart';
@@ -31,8 +31,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  /**
+   由于很多同学说没有跳转动画，这里是因为之前exmaple里面用的是 [PageRouteBuilder]，
+   其实这里是可以自定义的，和Boost没太多关系，比如我想用类似iOS平台的动画，
+   那么只需要像下面这样写成 [CupertinoPageRoute] 即可
+   (这里全写成[MaterialPageRoute]也行，这里只不过用[CupertinoPageRoute]举例子)
+
+   注意，如果需要push的时候，两个页面都需要动的话，
+  （就是像iOS native那样，在push的时候，前面一个页面也会向左推一段距离）
+   那么前后两个页面都必须是遵循CupertinoRouteTransitionMixin的路由
+   简单来说，就两个页面都是CupertinoPageRoute就好
+   如果用MaterialPageRoute的话同理
+    */
   ///路由表(用于原生通过flutter_boost打开以下页面)
-  static Map<String, FlutterBoostRouteFactory> routerMap = {
+   Map<String, FlutterBoostRouteFactory> routerMap = {
     // 首页
     'homePage': (settings, uniqueId) {
       return PageRouteBuilder<dynamic>(
@@ -41,20 +53,25 @@ class _MyAppState extends State<MyApp> {
             return HomePage();
           });
     },
-    // 'mainPage': (settings, uniqueId) {
-    //   return PageRouteBuilder<dynamic>(
-    //       settings: settings,
-    //       pageBuilder: (_, __, ___) {
-    //         return MainPage();
-    //       });
-    // },
+
+     // 'mainPage': (RouteSettings settings, String uniqueId) {
+     //   return CupertinoPageRoute(
+     //       settings: settings,
+     //       builder: (_) {
+     //         Map<String, Object> map = settings.arguments as Map<String, Object> ;
+     //         String data = map['data'] as String;
+     //         return MainPage(
+     //           data: data,
+     //         );
+     //       });
+     // },
 
     'mainPage': (settings, uniqueId) {
       return PageRouteBuilder<dynamic>(
           settings: settings,
           pageBuilder: (_, __, ___) {
-            Map<String, Object> map = settings.arguments;
-            String data = map['data'];
+            Map<String, Object> map = settings.arguments as Map<String, Object>;
+            String data = map['data'] as String;
             return MainPage(
               data: data,
             );
@@ -64,9 +81,11 @@ class _MyAppState extends State<MyApp> {
     'simplePage': (settings, uniqueId) {
       return PageRouteBuilder<dynamic>(
           settings: settings,
-          pageBuilder: (_, __, ___) => SimplePage(
-            data: settings.arguments,
-          ));
+          pageBuilder: (_, __, ___) {
+            Map<String, Object> map = settings.arguments as Map<String, Object>;
+            String data = map['data'] as String;
+            return SimplePage(data: data);
+          });
     },
 
     ///生命周期例子页面
@@ -93,8 +112,8 @@ class _MyAppState extends State<MyApp> {
     },
   };
 
-  Route<dynamic> routeFactory(RouteSettings settings, String uniqueId) {
-    FlutterBoostRouteFactory func = routerMap[settings.name];
+  Route<dynamic>? routeFactory(RouteSettings settings, String? uniqueId) {
+    FlutterBoostRouteFactory? func = routerMap[settings.name];
     if (func == null) {
       return null;
     }
